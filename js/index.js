@@ -9,7 +9,7 @@ let fallos = localStorage.getItem("valorFallo", "fallos") || 0;
 
 
 function crearRandomNumero() {
-    randomNumero = Math.round(Math.random() * 10);
+    randomNumero = Math.random(Math.round() * 10);
 }
 
 function verificarNumero() {
@@ -30,6 +30,10 @@ function verificarNumero() {
     }
 
 }
+
+estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
+estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
+
 
 function limpiarDatos() {
     localStorage.clear();
