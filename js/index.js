@@ -4,42 +4,43 @@ let boton = document.querySelector(".section__button");
 let botonLimpiar =  document.querySelector(".borrarDatos");
 let textoResultado = document.getElementById("resultado");
 let estadisticas = document.getElementById("estadisticas");
-let exitos = localStorage.getItem("valorExito", "exitos") || 0;
-let fallos = localStorage.getItem("valorFallo", "fallos") || 0;
+let exitos = localStorage.getItem("exitos") || 0;
+let fallos = localStorage.getItem("fallos") || 0;
 
 
 function crearRandomNumero() {
-    randomNumero = Math.random(Math.round() * 10);
+    randomNumero = Math.round(Math.random() * 8);
+    console.log(randomNumero)
 }
 
 function verificarNumero() {
     let usuarioNumero = document.getElementById("numeroUsuario").value;
-    parseInt(usuarioNumero);
+    usuarioNumero = parseInt(usuarioNumero);    
 
     if(usuarioNumero === randomNumero) {
         exitos++;
-        localStorage.getItem("valorExito", exitos);
+        localStorage.setItem("exitos", exitos);
         textoResultado.innerHTML = "Genial!"
-        estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + "y " + fallos + " fallos";
+        estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
         crearRandomNumero();
     }  else {
         fallos++;
-        localStorage.getItem("valorFallo", fallos);
+        localStorage.setItem("fallos", fallos);
         textoResultado.innerHTML = "Has fallado"
         estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
     }
 
 }
 
-estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
-estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
-
-
 function limpiarDatos() {
     localStorage.clear();
     location.reload();
 }
 
+crearRandomNumero();
+
 boton.addEventListener("click", verificarNumero);
 botonLimpiar.addEventListener("click", limpiarDatos);
+
+estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
 
