@@ -14,7 +14,7 @@ function crearRandomNumero() {
 
 function verificarNumero() {
     let usuarioNumero = document.getElementById("numeroUsuario").value;
-    usuarioNumero = parseInt();
+    parseInt(usuarioNumero);
 
     if(usuarioNumero === randomNumero) {
         exitos++;
@@ -26,7 +26,7 @@ function verificarNumero() {
         fallos++;
         localStorage.getItem("valorFallo", fallos);
         textoResultado.innerHTML = "Has fallado"
-        estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + "y " + fallos + " fallos";
+        estadisticas.innerHTML = "Tienes " + exitos + " éxitos" + " y " + fallos + " fallos";
     }
 
 }
@@ -35,4 +35,7 @@ function limpiarDatos() {
     localStorage.clear();
     location.reload();
 }
+
+boton.addEventListener("click", verificarNumero);
+botonLimpiar.addEventListener("click", limpiarDatos);
 
